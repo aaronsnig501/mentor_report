@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Mentor Report’s documentation! &#8212; Mentor Report rc documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-mentor-report-s-documentation">
+<h1>Welcome to Mentor Report’s documentation!<a class="headerlink" href="#welcome-to-mentor-report-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-app">
+<span id="mentor-report-main"></span><h1>Mentor Report main<a class="headerlink" href="#module-app" title="Permalink to this headline">¶</a></h1>
+<p>app.py - This module is the entry point into the <cite>mentor report</cite></p>
+<p>This is the module where routes and defined and where the app is run from.</p>
+<p>In order to execute this file, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python app.py
+</pre></div>
+</div>
+<dl class="function">
+<dt id="app.sessions">
+<code class="descclassname">app.</code><code class="descname">sessions</code><span class="sig-paren">(</span><em>rate</em>, <em>month</em>, <em>year</em><span class="sig-paren">)</span><a class="headerlink" href="#app.sessions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sessions</p>
+<p>The endpoint that will be retrieve the data and return it the caller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rate</strong> (<em>int</em>) – The rate of payment per hour</li>
+<li><strong>month</strong> (<em>str</em>) – The month that wish to generate the report for</li>
+<li><strong>year</strong> (<em>str</em>) – The year that wish to generate the report for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A JSON representation of the sessions, including the formula that will be used
+in the Google Sheet</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">JSON</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>In order to generate a report with a rate of 50 euro per hour for the month of March, 2020:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:8080/sessions/50/3/2020
+</pre></div>
+</div>
+<p>Or, in Python using requests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:8080/sessions/50/3/2020&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+<span class="go">200</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Example Output:</dt>
+<dd><p class="first">An example of what the data structure looks like:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="s2">&quot;0:26:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;02/03/2020&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_billable&quot;</span><span class="p">:</span> <span class="mf">21.67</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Eamonn Smyth&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils.calculator">
+<span id="mentor-report-calculator"></span><h1>Mentor Report calculator<a class="headerlink" href="#module-utils.calculator" title="Permalink to this headline">¶</a></h1>
+<p>A helper module that will be responsible for generating the rate of
+each session, based on the length of the session.</p>
+<dl class="function">
+<dt id="utils.calculator.perform_rate_calculation">
+<code class="descclassname">utils.calculator.</code><code class="descname">perform_rate_calculation</code><span class="sig-paren">(</span><em>duration</em>, <em>rate_per_hour</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.calculator.perform_rate_calculation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function that will execute the whole process of calculating
+the total amount payable for a session based on the duration provided
+from the API</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Mentor Report’s documentation!</a></li>
+<li><a class="reference internal" href="#module-app">Mentor Report main</a></li>
+<li><a class="reference internal" href="#module-utils.calculator">Mentor Report calculator</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Aaron Sinnott.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
