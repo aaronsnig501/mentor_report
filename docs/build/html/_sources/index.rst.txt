@@ -10,7 +10,7 @@ Welcome to Mentor Report's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-Mentor Report main
+Mentor Report app
 ===================
 .. automodule:: app
    :members:

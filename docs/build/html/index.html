@@ -37,7 +37,7 @@
 </div>
 </div>
 <div class="section" id="module-app">
-<span id="mentor-report-main"></span><h1>Mentor Report main<a class="headerlink" href="#module-app" title="Permalink to this headline">¶</a></h1>
+<span id="mentor-report-app"></span><h1>Mentor Report app<a class="headerlink" href="#module-app" title="Permalink to this headline">¶</a></h1>
 <p>app.py - This module is the entry point into the <cite>mentor report</cite></p>
 <p>This is the module where routes and defined and where the app is run from.</p>
 <p>In order to execute this file, run:</p>
@@ -101,14 +101,36 @@ in the Google Sheet</p>
 </div>
 <div class="section" id="module-utils.calculator">
 <span id="mentor-report-calculator"></span><h1>Mentor Report calculator<a class="headerlink" href="#module-utils.calculator" title="Permalink to this headline">¶</a></h1>
-<p>A helper module that will be responsible for generating the rate of
-each session, based on the length of the session.</p>
+<p>A helper module that will be responsible for generating the rate of each
+session, based on the length of the session.</p>
+<p>Most of the members here are private as they are not needed outside of the
+scope of this module.</p>
 <dl class="function">
 <dt id="utils.calculator.perform_rate_calculation">
 <code class="descclassname">utils.calculator.</code><code class="descname">perform_rate_calculation</code><span class="sig-paren">(</span><em>duration</em>, <em>rate_per_hour</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.calculator.perform_rate_calculation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper function that will execute the whole process of calculating
+<dd><p>Perform the rate calculation</p>
+<p>Wrapper function that will execute the whole process of calculating
 the total amount payable for a session based on the duration provided
-from the API</p>
+from the API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>duration</strong> (<em>str</em>) – The total duration of the call</li>
+<li><strong>rate_per_hour</strong> (<em>int</em>) – The hourly rate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The total amount of money earned for the call, based on the
+length of the call and the hourly rate</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -123,7 +145,7 @@ from the API</p>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Welcome to Mentor Report’s documentation!</a></li>
-<li><a class="reference internal" href="#module-app">Mentor Report main</a></li>
+<li><a class="reference internal" href="#module-app">Mentor Report app</a></li>
 <li><a class="reference internal" href="#module-utils.calculator">Mentor Report calculator</a></li>
 </ul>
 <div class="relations">
