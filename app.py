@@ -8,8 +8,10 @@ In order to execute this file, run::
 """
 import os
 import json
+from bottle import route, run, default_app
 from utils.api_handler import get_data
-from bottle import route, run
+
+application = default_app()
 
 
 @route('/sessions/<rate:int>/<month>/<year>')
