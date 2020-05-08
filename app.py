@@ -10,6 +10,7 @@ import os
 import json
 from bottle import route, run, default_app
 from utils.api_handler import get_data
+from utils.formulas import generate_formula
 
 application = default_app()
 
@@ -49,13 +50,15 @@ def sessions(rate, month, year):
                     "duration": "0:26:00",
                     "date": "02/03/2020",
                     "total_billable": 21.67,
-                    "name": "Eamonn Smyth"
+                    "name": "Eamonn Smyth",
+                    "formula": "=SPLIT(\"Mentor session - Eamonn Smyth 02/03/2020,,,50,0:26:00,21.67\", \",\", TRUE, FALSE)"
                 }
             ]
 
     """
     endpoint = os.getenv('API_ENDPOINT').format(month, year)
     session_data = [entry for entry in get_data(endpoint, 50)]
+    [entry.update({"formula": generate_formula(entry, rate)}) for entry in session_data]
     return json.dumps(session_data, ensure_ascii=False).encode('utf8')
 
 
