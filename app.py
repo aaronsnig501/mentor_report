@@ -12,8 +12,6 @@ from bottle import route, run, default_app
 from utils.api_handler import get_data
 from utils.formulas import generate_formula
 
-application = default_app()
-
 
 @route('/sessions/<rate:int>/<month>/<year>')
 def sessions(rate, month, year):
@@ -62,5 +60,17 @@ def sessions(rate, month, year):
     return json.dumps(session_data, ensure_ascii=False).encode('utf8')
 
 
+def wsgi_app():
+    """Get the WSGI app
+
+    Gets the WSGI app to run the application in production
+    
+    Returns:
+        app: Returns the application that can be run by Apache
+    """
+    return default_app()
+
+
 if __name__ == '__main__':
-    run(host='0.0.0.0', port=8080, debug=os.getenv("DEBUG", False), reloader=True)
+    run(host='0.0.0.0', port=8080, 
+        debug=os.getenv("DEBUG", False), reloader=True)
