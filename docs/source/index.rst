@@ -15,6 +15,11 @@ Mentor Report app
 .. automodule:: app
    :members:
 
+Mentor Report api_handler
+=========================
+.. automodule:: utils.api_handler
+   :members:
+
 Mentor Report calculator
 ========================
 .. automodule:: utils.calculator

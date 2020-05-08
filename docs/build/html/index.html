@@ -99,6 +99,38 @@ in the Google Sheet</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-utils.api_handler">
+<span id="mentor-report-api-handler"></span><h1>Mentor Report api_handler<a class="headerlink" href="#module-utils.api_handler" title="Permalink to this headline">¶</a></h1>
+<p>A utility module responsible for retrieving the necessary data from the
+mentoring API.</p>
+<p>Most properties of this module are private as they are only needed to parse
+the information that comes from the API.</p>
+<dl class="function">
+<dt id="utils.api_handler.get_data">
+<code class="descclassname">utils.api_handler.</code><code class="descname">get_data</code><span class="sig-paren">(</span><em>url</em>, <em>rate</em><span class="sig-paren">)</span><a class="headerlink" href="#utils.api_handler.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle the data that comes from the API and return a parsed dataset to the
+consumer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>str</em>) – The URL that the data will be retrieved from</li>
+<li><strong>rate</strong> (<em>int</em>) – The hourly rate of payment</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The next row of data in dictionary format</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">iterator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-utils.calculator">
 <span id="mentor-report-calculator"></span><h1>Mentor Report calculator<a class="headerlink" href="#module-utils.calculator" title="Permalink to this headline">¶</a></h1>
 <p>A helper module that will be responsible for generating the rate of each
@@ -146,6 +178,7 @@ length of the call and the hourly rate</p>
   <ul>
 <li><a class="reference internal" href="#">Welcome to Mentor Report’s documentation!</a></li>
 <li><a class="reference internal" href="#module-app">Mentor Report app</a></li>
+<li><a class="reference internal" href="#module-utils.api_handler">Mentor Report api_handler</a></li>
 <li><a class="reference internal" href="#module-utils.calculator">Mentor Report calculator</a></li>
 </ul>
 <div class="relations">
