@@ -5,9 +5,11 @@ session, based on the length of the session.
 Most of the members here are private as they are not needed outside of the
 scope of this module.
 """
+from utils.decorator import accepts
 
 
-def _calculate_rate(total_time, rate_per_hour):
+@accepts(float, int)
+def _calculate_rate(total_time: float, rate_per_hour: int) -> float:
     """Calculate the total amount earned
 
     Take the total amount of time on a call and calculate the total amount of
@@ -23,7 +25,8 @@ def _calculate_rate(total_time, rate_per_hour):
     return round((rate_per_hour * total_time) / 60, 2)
 
 
-def _total_number_of_minutes(hours, minutes):
+@accepts(int, int)
+def _total_number_of_minutes(hours: int, minutes: int) -> int:
     """Total times represented as minutes
 
     The number of hours needs to be converted to minutes and added to the
@@ -41,7 +44,8 @@ def _total_number_of_minutes(hours, minutes):
     return hours_as_minutes + minutes
 
 
-def _seconds_as_decimal_of_a_minute(seconds):
+@accepts(int)
+def _seconds_as_decimal_of_a_minute(seconds: int) -> float:
     """Convert seconds to a decimal value
 
     Return the number of seconds as a decimal of a minute in order to make
@@ -56,7 +60,8 @@ def _seconds_as_decimal_of_a_minute(seconds):
     return round(seconds / 60, 2)
 
 
-def _split_formatted_time(formatted_time):
+@accepts(str)
+def _split_formatted_time(formatted_time: str) -> tuple:
     """Splitted formatted time into individual integers
 
     Take the time from a string and return each piece as an entry in a tuple
@@ -71,7 +76,8 @@ def _split_formatted_time(formatted_time):
     return tuple(map(int, time_pieces))
 
 
-def perform_rate_calculation(duration, rate_per_hour):
+@accepts(str, int)
+def perform_rate_calculation(duration: str, rate_per_hour: int) -> float:
     """Perform the rate calculation
 
     Wrapper function that will execute the whole process of calculating
